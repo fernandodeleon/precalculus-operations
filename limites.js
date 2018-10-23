@@ -10,19 +10,22 @@ $(document).ready(function () {
 
 
     $("#formLimites").submit(function (event) {
+        
+        let fn = $("#inputLimites").val();
+        let color = $("#inputColorLimite").val();
+        let rango = [$("#inputLimite1").val(), $("#inputLimite2").val()];
+
         lista.push({
-            fn: $("#inputLimites").val(), color: $("#inputColorLimite").val(), range: [$("#inputLimite1").val(), $("#inputLimite2").val()]
+            fn: fn, color: color, range: rango
         });
 
-        lista.forEach(element => {
-            $("#tableLimites").append(
-                `<tr>
-                    <td>${element.fn}</td>
-                    <td>${element.color}</td>
-                    <td>[${element.range}]</td>
-                </tr>`
-            )
-        });
+        $("#tableLimites").append(
+            `<tr>
+                <td>${fn}</td>
+                <td>[${rango}]</td>
+                <td>${color}</td>
+            </tr>`
+        );
         graficar();
 
         event.preventDefault();
